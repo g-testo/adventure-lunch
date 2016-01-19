@@ -8,11 +8,17 @@
     h1{
         font-size: 100px;
       }
+    #domain-suffix {
+        font-size: 60px;
+      }  
     }
     
     @media all and (max-width: 959px) and (min-width: 600px) {
     h1{
         font-size: 11vw;
+      }
+    #domain-suffix {
+        font-size: 6vw;
       }
     }
     
@@ -20,7 +26,14 @@
     h1{
         font-size: 15vw;
       }
+    #domain-suffix {
+        font-size: 7vw;
+      }
     }
+}
+
+.columns-container img {
+    max-width: 100%;
 }
 
 .left-column, .right-column {  
