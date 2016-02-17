@@ -19,7 +19,7 @@
 
   	<div class="right-column">
   		<h2>Next Lunch</h2>
-        <p>Name: <%= @next_lunch.name %></p>
+        <p>Name: <%= link_to @next_lunch.name, "https://wilmajean345.com/" %></p>
         <p>Date: <%= @next_lunch.date.strftime("%A, %B %d %Y") %> </p>
         <p>Time: <%= @next_lunch.date.strftime("%l:%M%p") %></p>
         <p>Address:</p>
