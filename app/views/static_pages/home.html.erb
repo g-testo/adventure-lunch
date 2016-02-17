@@ -18,8 +18,14 @@
   	</div>
 
   	<div class="right-column">
-  		<h2>Details</h2>
-        <p>The next adventure is planned for January 22nd, 2016.</p>
-        <p>Location: TBD</p>
+  		<h2>Next Lunch</h2>
+        <p>Name: <%= @next_lunch.name %></p>
+        <p>Date: <%= @next_lunch.date.strftime("%A, %B %Y") %> </p>
+        <p>Time: <%= @next_lunch.date.strftime("%l:%M%p") %></p>
+        <p>Address:</p>
+        <address>
+           <%= @next_lunch.street %><br>
+           <%= "#{@next_lunch.city}, #{@next_lunch.state} #{@next_lunch.zipcode}" %> 
+        </address>
   	</div>
 </div>
