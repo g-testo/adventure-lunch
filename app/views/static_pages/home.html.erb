@@ -20,14 +20,18 @@
   	<div class="right-column">
   		<div id="next_lunch">
       		<h2>Next Lunch</h2>
-            <p>Name: <%= link_to @next_lunch.name, @next_lunch.url, :target => "_blank" %></p>
-            <p>Date: <%= @next_lunch.date.strftime("%A, %B %d %Y") %> </p>
-            <p>Time: <%= @next_lunch.date.strftime("%l:%M%p") %></p>
-            <p>Address:</p>
-            <address>
-               <%= @next_lunch.street %><br>
-               <%= "#{@next_lunch.city}, #{@next_lunch.state} #{@next_lunch.zipcode}" %> 
-            </address>
+      		<% if @next_lunch %>
+               <p>Name: <%= link_to @next_lunch.name, @next_lunch.url, :target => "_blank" %></p>
+               <p>Date: <%= @next_lunch.date.strftime("%A, %B %d %Y") %> </p>
+               <p>Time: <%= @next_lunch.date.strftime("%l:%M%p") %></p>
+               <p>Address:</p>
+               <address>
+                  <%= @next_lunch.street %><br>
+                  <%= "#{@next_lunch.city}, #{@next_lunch.state} #{@next_lunch.zipcode}" %> 
+               </address>
+            <% else %>
+               <h3>TBA</h3>
+            <% end %>
   		</div>
   		<div class="past_lunches">
   		    <h2>Past Lunches</h2>
