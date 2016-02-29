@@ -1,0 +1,40 @@
+// Place all the styles related to the reviews controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.review_container {
+  width: 60%;
+  margin-left: 20%;
+  padding-top: 40px;
+  font-family: 'Open Sans', sans-serif;
+  
+  h1 {
+    font-size: 30px;
+    padding: 20px 0 20px 0;
+  }
+  .review_body {
+    padding: 20px 0;
+    p {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 27px;
+      padding: 8px 0; 
+    }
+  }
+  p{
+    font-size: 22px;
+  }
+  
+  .author_name {
+    padding: 10px 0;
+  }
+  #swords {
+    font-size: 30px;
+  }
+  
+  #of_five {
+     font-size: 80px;
+     display: inline;
+     position: relative;
+     top: -20px;
+   }
+}
