@@ -1,5 +1,8 @@
 class LunchesController < ApplicationController
-
+  
+  
+  before_action :ensure_admin!, except: [:show, :index, ]
+  
   def new
   end
   
@@ -22,4 +25,13 @@ class LunchesController < ApplicationController
     def lunch_params 
       params.require(:lunch).permit(:name, :url, :date, :street, :city, :state, :zipcode)
     end
+    
+      
+  def ensure_admin!
+    unless current_user.try(:admin?)
+      redirect_to new_user_session_path
+      flash[:alert] = "You are not authorized to do this."
+      return false
+    end
+  end
 end 
