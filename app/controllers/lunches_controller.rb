@@ -3,6 +3,11 @@ class LunchesController < ApplicationController
   def new
   end
   
+  def show
+    @lunch = Lunch.find(params[:id])
+    @reviews = @lunch.reviews
+  end 
+  
   def create
     @lunch = Lunch.new(lunch_params)
     

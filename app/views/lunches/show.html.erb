@@ -1,0 +1,28 @@
+<div class="show_lunch_container">
+  <div class="lunch_container">
+    <h1><%= @lunch.name %></h1>
+    <p>Date: <%= @lunch.date.strftime("%A, %B %d %Y") %></p>
+    <p>Time: <%= @lunch.date.strftime("%l:%M%p") %></p>
+    <p>Address:</p>
+    <address>
+      <%= @lunch.street %><br>
+      <%= "#{@lunch.city}, #{@lunch.state} #{@lunch.zipcode}" %> 
+    </address>
+    <br>
+    <% if @reviews.any? %>
+      <h3>Reviews:</h3>
+      <hr />
+      <% @reviews.each do |review| %>
+        <h4><%= review.title %></h4>
+      <% end %>
+    <% else %>
+    <p>No reviews yet. Be the first!</p>
+    <% end %>
+    <% if user_signed_in? %>
+      <h3>Don't be shy, tell us what you thought.</h3>
+      <button>Add Review</button>
+    <% else %>
+      <h3><%= link_to "Log in", new_user_registration_path %> to add your review.</h3>  
+    <% end %>
+  </div>
+</div>
