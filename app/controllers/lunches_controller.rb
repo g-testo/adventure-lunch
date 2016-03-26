@@ -1,7 +1,8 @@
 class LunchesController < ApplicationController
   
   
-  before_action :ensure_admin!, except: [:show, :index, ]
+  before_action :ensure_admin!, 
+    except: [:show, :index, :past_lunches, :next_lunch]
   
   def new
   end
@@ -26,6 +27,7 @@ class LunchesController < ApplicationController
   end 
   
   def next_lunch
+    @past_lunches = Lunch.order(date: :desc).select{|i| i.date < Date.today}.take(8)
     @next_lunch = Lunch.order(date: :asc).select do |i| i.date > Date.today end.first 
     if @next_lunch
       redirect_to lunch_path(@next_lunch)

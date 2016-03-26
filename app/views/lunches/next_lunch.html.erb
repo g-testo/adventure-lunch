@@ -1,1 +1,28 @@
-<h1>As Of Now, No Lunch Is Planned (frowny face)</h1>
+<div class="title">
+   <h1>Adventure</h1>
+   <h1>Lunch<span id="domain-suffix">.club</span></h1> 
+</div>
+ <div class="columns-container">
+
+  	<div class="left-column">
+  		<h1>As Of Now, No Lunch Is Planned (frowny face)</h1>
+  		<%= image_tag "steak.jpg" %>
+  		<p>
+  		    Adventure Lunch is a weekly outing to an exotic  
+  		    culinary establishment in New York City. The purpose is simple: 
+  		    try new foods and make new friends. To attend is free and 
+  		    anyone is welcome.
+  		</p>
+  	</div>
+    <div class="right-column">
+  		<h2>Check out these past lunches:</h2>
+  		<div class="past_lunches">
+  		    <% @past_lunches.each do |lunch| %>
+  		        <div id="past_lunch">
+  		            <h3><%=lunch.name%></h3>
+  		            <p>Check out their <%= link_to "website", lunch.url, :target => "_blank" %>.</p>
+  		        </div>
+  		    <% end %>
+  		</div>
+  	</div>
+</div>
