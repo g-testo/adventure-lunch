@@ -17,7 +17,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    @lunch = Lunch.find(params[:id]);
+    @review = @lunch.reviews.new(review_params)
 
     respond_to do |format|
       if @review.save

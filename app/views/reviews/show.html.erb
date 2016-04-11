@@ -14,10 +14,11 @@
     <%= simple_format(@review.body) %>  
   </div>
   
- 
+     <% if @review.swords? %>
     <strong id="swords">Swords:</strong><br>
     <% @review.swords.times do %>
       <%= image_tag 'sword.png' %>
+      <% end %>
     <%end %>
     <p id="of_five">/5</p>
   

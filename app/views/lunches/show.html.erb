@@ -9,20 +9,42 @@
       <%= "#{@lunch.city}, #{@lunch.state} #{@lunch.zipcode}" %> 
     </address>
     <br>
-    <% if @reviews.any? %>
+    
+    <!--Section for Reviews-->
+    <!--When reviews-->
+    <% if @reviews.none? %>
       <h3>Reviews:</h3>
       <hr />
       <% @reviews.each do |review| %>
-        <h4><%= review.title %></h4>
+        <h2><%= review.title %></h2>
+        <p><%= simple_format(review.body) %></p>
+        <% if review.swords? %>
+          <strong id="swords">Swords:</strong><br>
+          <% review.swords.times do %>
+            <%= image_tag 'sword.png' %>
+          <% end %>
+          <h2 id="of_five" style = "display: inline">/5</h2>
+        <% end %>
+        
+        <p>Review by: <%= review.fullname %></p>
+        <hr>
       <% end %>
+    <!--When no reviews-->
     <% else %>
-    <p>No reviews yet. Be the first!</p>
+      <p>No reviews yet. Be the first!</p>
     <% end %>
+    
+    <!--Form to Leave Review-->
+    
     <% if user_signed_in? %>
       <h3>Don't be shy, tell us what you thought.</h3>
-      <button>Add Review</button>
+      <%= form_for @review, url: reviews_path, html: {method: :post}  do |f| %>
+        <%= f.text_area :body, size: "60x12" %>
+        <%= f.submit "Create" %>
+      <% end %>
+      
     <% else %>
-      <h3><%= link_to "Log in", new_user_registration_path %> to add your review.</h3>  
+      <h3><%= link_to "Log in", new_user_session_path %> to add your review.</h3>  
     <% end %>
   </div>
 </div>
