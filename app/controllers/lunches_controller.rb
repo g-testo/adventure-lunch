@@ -9,7 +9,7 @@ class LunchesController < ApplicationController
   
   def show
     @lunch = Lunch.find(params[:id])
-    @review = @lunch.reviews.new
+    @review = current_user.reviews.build(params[:review]) if user_signed_in?
     @reviews = @lunch.reviews
   end 
   

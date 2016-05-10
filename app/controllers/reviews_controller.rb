@@ -17,19 +17,16 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @lunch = Lunch.find(params[:id]);
-    @review = @lunch.reviews.new(review_params)
+    @review = current_user.reviews.build(review_params)
 
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.save
+      redirect_to lunch_path(@review.lunch_id)
+    else
+      redirect_to lunch_path(@review.lunch_id)
     end
+
   end
+
 
   def update
     respond_to do |format|
@@ -59,6 +56,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:author, :body, :swords)
+      params.require(:review).permit(:lunch_id, :user_id, :title, :body, :swords)
     end
 end
