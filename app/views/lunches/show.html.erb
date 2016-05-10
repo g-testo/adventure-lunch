@@ -8,6 +8,10 @@
       <%= @lunch.street %><br>
       <%= "#{@lunch.city}, #{@lunch.state} #{@lunch.zipcode}" %> 
     </address>
+    <div class="lunch_description" style="padding-top: 20px;">
+      <h3>About:</h3>
+      <%= simple_format(@lunch.description, html_options = {style: "padding: 10px;"}) %>
+    </div>
     <br>
     
     <!--Section for Reviews-->
