@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('page:change', function(){
     var pull = $('#pull');
     menu     = $('nav ul');
     menuHeight = menu.height();

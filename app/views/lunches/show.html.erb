@@ -3,7 +3,7 @@
     <h1><%= @lunch.name %></h1>
     <p>Date: <%= @lunch.date.strftime("%A, %B %d %Y") %></p>
     <p>Time: <%= @lunch.date.strftime("%l:%M%p") %></p>
-    <p>Website: <%= link_to @lunch.url %></p>
+    <p>Check out their <%= link_to "website", @lunch.url %>.</p>
     <p>Address:</p>
     <address>
       <%= @lunch.street %><br>
@@ -16,6 +16,32 @@
       </div>
     <% end %>
     <br>
+          
+    <!--Form to Leave Review-->
+    <% unless current_user && @lunch.reviews.find_by_user_id(current_user.id) %>
+      <button id="leave_review_btn"><p>Leave a review.</p></button>
+    <% end %>
+    <div class="show_review_form">
+      <% if user_signed_in? %>
+        <h3 id="form_prompt">Be your poetic self...</h3>
+        
+        <%= simple_form_for @review, url: reviews_path, html: {method: :post}  do |f| %>
+          <span class="review-title">Title: </span>
+          <%= f.text_field :title, label: "Title" %><br/>
+          <%= f.text_area :body, {placeholder: "Express your strong feelings here..."} %><br>
+          <%= f.hidden_field :lunch_id, :value => @lunch.id %>
+          <p>How many swords would you give? </p>
+          <% 5.times do |i| %>
+            <%= i+1 %><%= f.radio_button(:swords, i+1) %>
+          <% end %>
+          <br>
+          <%= f.submit "Create" %>
+        <% end %>
+        
+      <% else %>
+        <h3><%= link_to "Log in", new_user_session_path %> to add your review.</h3>  
+      <% end %>
+    </div>  
     
     <!--Section for Reviews-->
     <!--When reviews-->
@@ -41,28 +67,6 @@
       <!--When no reviews-->
       <% else %>
         <p>No reviews yet. Be the first!</p>
-      <% end %>
-      
-      <!--Form to Leave Review-->
-      
-      <% if user_signed_in? %>
-        <h3>Don't be shy, tell us what you thought.</h3>
-        
-        <%= simple_form_for @review, url: reviews_path, html: {method: :post}  do |f| %>
-          <span class="review-title">Title</span>
-          <%= f.text_field :title, label: "Title" %><br/>
-          <%= f.text_area :body, {placeholder: "Express your strong feelings here..."} %><br>
-          <%= f.hidden_field :lunch_id, :value => @lunch.id %>
-          <p>How many swords would you give? </p>
-          <% 5.times do |i| %>
-            <%= i+1 %><%= f.radio_button(:swords, i+1) %>
-          <% end %>
-          <br>
-          <%= f.submit "Create" %>
-        <% end %>
-        
-      <% else %>
-        <h3><%= link_to "Log in", new_user_session_path %> to add your review.</h3>  
       <% end %>
   </div>
 </div>
