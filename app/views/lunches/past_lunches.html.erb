@@ -1,4 +1,15 @@
-<h1>Past Lunches</h1>
-<% @past_lunches.each do |past_lunch| %>
-  <h3><%= past_lunch.name %></h3>
-<% end %>
+<div class="past_lunches">
+  <h2>Past Lunches</h2>
+  <% @past_lunches.each do |lunch| %>
+      <div class="past_lunch">
+          <h3><%= link_to lunch.name, lunch_path(lunch.id), :class => "lunch-name" %></h3>
+          <p>Check out their <%= link_to "website", lunch.url, :target => "_blank" %>.</p>
+          <% if lunch.reviews.any?%>
+            <div id="random_review">
+              <h3> One Adventurer said...</h3>
+              <p><%= lunch.reviews.sample.body %></p>
+            </div>
+          <% end %>
+      </div>
+  <% end %>
+</div>

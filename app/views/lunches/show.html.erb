@@ -3,15 +3,18 @@
     <h1><%= @lunch.name %></h1>
     <p>Date: <%= @lunch.date.strftime("%A, %B %d %Y") %></p>
     <p>Time: <%= @lunch.date.strftime("%l:%M%p") %></p>
+    <p>Website: <%= link_to @lunch.url %></p>
     <p>Address:</p>
     <address>
       <%= @lunch.street %><br>
       <%= "#{@lunch.city}, #{@lunch.state} #{@lunch.zipcode}" %> 
     </address>
-    <div class="lunch_description" style="padding-top: 20px;">
-      <h3>About:</h3>
-      <%= simple_format(@lunch.description, html_options = {style: "padding: 10px;"}) %>
-    </div>
+    <% if @lunch.description %>
+      <div class="lunch_description">
+        <h3>About:</h3>
+        <%= simple_format(@lunch.description, html_options = {style: "padding: 10px;"}) %>
+      </div>
+    <% end %>
     <br>
     
     <!--Section for Reviews-->

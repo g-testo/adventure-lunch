@@ -21,7 +21,9 @@
   		<div id="next_lunch">
       		<h2>Next Lunch</h2>
       		<% if @next_lunch %>
-               <p>Name: <%= link_to @next_lunch.name, @next_lunch.url, :target => "_blank" %></p>
+               <h3>
+                  <%= link_to @next_lunch.name, @next_lunch.url, :target => "_blank", :class => "lunch-name" %>
+               </h3>
                <p>Date: <%= @next_lunch.date.strftime("%A, %B %d %Y") %> </p>
                <p>Time: <%= @next_lunch.date.strftime("%l:%M%p") %></p>
                <p>Address:</p>
@@ -29,6 +31,7 @@
                   <%= @next_lunch.street %><br>
                   <%= "#{@next_lunch.city}, #{@next_lunch.state} #{@next_lunch.zipcode}" %> 
                </address>
+               <p>Check out their <%= link_to "website", @next_lunch.url, :target => "_blank" %>.</p>
             <% else %>
                <h3>TBA</h3>
             <% end %>
@@ -37,7 +40,7 @@
   		    <h2>Past Lunches</h2>
   		    <% @past_lunches.each do |lunch| %>
   		        <div id="past_lunch">
-  		            <h3><%=lunch.name%></h3>
+  		            <h3><%= link_to lunch.name, lunch_path(lunch.id), :class => "lunch-name" %></h3>
   		            <p>Check out their <%= link_to "website", lunch.url, :target => "_blank" %>.</p>
   		        </div>
   		    <% end %>

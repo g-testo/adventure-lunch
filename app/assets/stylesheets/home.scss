@@ -75,3 +75,14 @@
 h1, h2, h3, p {
    font-family: 'Lucida Sans Typewriter', 'Lucida Console', monaco, 'Bitstream Vera Sans Mono', monospace;
 }
+
+.lunch-name {
+    text-decoration: none;
+    color: navy;
+}
+
+#next_lunch {
+    p {
+        font-size: 18px;
+    }
+}
