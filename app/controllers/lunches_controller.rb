@@ -1,7 +1,7 @@
 class LunchesController < ApplicationController
   
   before_action :ensure_admin!, 
-    except: [:show, :index, :past_lunches, :next_lunch]
+    except: [:show, :past_lunches, :next_lunch]
   
   def new
     @lunch = Lunch.new
@@ -19,16 +19,6 @@ class LunchesController < ApplicationController
   
   def index
     @lunches = Lunch.all
-  end
-  
-  def create
-    @lunch = Lunch.new(lunch_params)
-    
-    if @lunch.save
-      redirect_to root_path
-    else 
-      render 'new'
-    end
   end
   
   def create

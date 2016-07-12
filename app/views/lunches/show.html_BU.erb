@@ -1,9 +1,0 @@
-<h1><%= @lunch.name %></h1>
-
-<%= @lunch.name %><br>
-<p>Url: <%= @lunch.url %></p> <br>
-<%= @lunch.description %><br>
-
-
-<%= link_to "edit", edit_lunch_path(@lunch)%>
-<%= link_to "delete", lunch_path(@lunch), method: :delete, data: { confirm: 'Are you sure?' }%>
