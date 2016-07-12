@@ -49,7 +49,6 @@ group :test do
   gem 'faker'
   gem 'capybara'
   gem 'launchy'
-  gem 'guard-rspec'
 end 
 
 group :production do
