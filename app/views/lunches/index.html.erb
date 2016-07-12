@@ -1,0 +1,20 @@
+<h1>Lunches#index</h1>
+
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+<% @lunches.each do |lunch| %>
+    <tr>
+        <td><%= lunch.id %></td>
+        <td><%= lunch.name %></td>
+        <td><%= lunch.description %></td>
+        <td><%= link_to "edit", edit_lunch_path(lunch)%></td>
+        <td><%= link_to "delete", lunch_path(lunch), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+    </tr>
+<% end %>
+    </tbody>
+</table>
