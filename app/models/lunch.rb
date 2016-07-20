@@ -1,7 +1,7 @@
 class Lunch < ActiveRecord::Base
     mount_uploader :lunch_image, LunchImageUploader
-    # validates_presence_of :name,:url, :date, :street, :city, :state, :zipcode
-    # has_many :reviews
+    validates_presence_of :name,:url, :date, :street, :city, :state, :zipcode
+    has_many :reviews
     validate :lunch_image_size
     
     private
