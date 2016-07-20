@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510130613) do
+ActiveRecord::Schema.define(version: 20160719001254) do
 
   create_table "installs", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160510130613) do
     t.integer  "zipcode"
     t.string   "url"
     t.string   "description"
+    t.string   "lunch_image"
   end
 
   create_table "reviews", force: :cascade do |t|

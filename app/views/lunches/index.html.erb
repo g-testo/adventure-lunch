@@ -14,6 +14,7 @@
         <td><%= lunch.description %></td>
         <td><%= link_to "edit", edit_lunch_path(lunch)%></td>
         <td><%= link_to "delete", lunch_path(lunch), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        <td><%= image_tag lunch.lunch_image.url %></td>
     </tr>
 <% end %>
     </tbody>
