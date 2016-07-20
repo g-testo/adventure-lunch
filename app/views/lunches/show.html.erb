@@ -9,6 +9,7 @@
       <%= @lunch.street %><br>
       <%= "#{@lunch.city}, #{@lunch.state} #{@lunch.zipcode}" %> 
     </address>
+    <div class="lunch_image"><%= image_tag @lunch.lunch_image.url %></div>
     <% if @lunch.description %>
       <div class="lunch_description">
         <h3>About:</h3>
